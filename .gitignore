@@ -1,0 +1,14 @@
+# Compiled binaries
+*.o
+*.out
+a.out
+build/
+
+# CUDA objects
+*.ptx
+*.cubin
+
+# Editor/OS clutter
+.vscode/
+__pycache__/
+*.swp
