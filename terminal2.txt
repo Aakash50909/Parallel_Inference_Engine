@@ -1,0 +1,53 @@
+aakash@pop-os:~$ cd LLM-Parallel
+bash: cd: LLM-Parallel: No such file or directory
+aakash@pop-os:~$ cd ..
+aakash@pop-os:/home$ cd LLM-Parallel
+bash: cd: LLM-Parallel: No such file or directory
+aakash@pop-os:/home$ cd ~
+aakash@pop-os:~$ cd LLM-Parallel
+bash: cd: LLM-Parallel: No such file or directory
+aakash@pop-os:~$ cd LLM_Parallel
+aakash@pop-os:~/LLM_Parallel$ touch src/layernorm.cpp include/layernorm.h
+aakash@pop-os:~/LLM_Parallel$ nano include/layernorm.h
+aakash@pop-os:~/LLM_Parallel$ nano src/layernorm.cpp
+aakash@pop-os:~/LLM_Parallel$ nano src/test_layernorm.cpp
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/layernorm.cpp src/test_layernorm.cpp -o test_layernorm && ./test_layernorm
+src/layernorm.cpp: In function ‘void layernorm(std::vector<float>&, const std::vector<float>&, const std::vector<float>&, int, int, float)’:
+src/layernorm.cpp:25:32: error: ‘sqrtf’ was not declared in this scope; did you mean ‘strtof’?
+   25 |         float std_inv = 1.0f / sqrtf(var + eps);
+      |                                ^~~~~
+      |                                strtof
+aakash@pop-os:~/LLM_Parallel$ nano src/layernorm.cpp
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/layernorm.cpp src/test_layernorm.cpp -o test_layernorm && ./test_layernorm
+LayerNorm([1,2,3,4]) = -1.34164 -0.447212 0.447212 1.34164
+Mean (should be ~0): 0
+Var  (should be ~1): 0.999992
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Add layernorm kernel with test"
+[master e14a907] Add layernorm kernel with test
+ 6 files changed, 255 insertions(+)
+ create mode 100644 include/layernorm.h
+ create mode 100644 llm_build_progress.svg
+ create mode 100644 src/layernorm.cpp
+ create mode 100644 src/test_layernorm.cpp
+ create mode 100644 terminal.txt
+ create mode 100755 test_layernorm
+aakash@pop-os:~/LLM_Parallel$ touch src/attention.cpp include/attention.h
+nano include/attention.h
+aakash@pop-os:~/LLM_Parallel$ nano src/attention.cpp
+aakash@pop-os:~/LLM_Parallel$ nano src/test_attention.cpp
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/matmul.cpp src/softmax.cpp src/attention.cpp src/test_attention.cpp -o test_attention && ./test_attention
+Attention output (3 x 4):
+0.451863 0.548137 0.822206 0
+0.274069 0.903726 0.822206 0
+0.274069 0.548137 1.35559 0
+Shape check (should be 12): 12 — PASSED
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Add scaled dot-product attention kernel with test"
+[master 165ccb9] Add scaled dot-product attention kernel with test
+ 4 files changed, 87 insertions(+)
+ create mode 100644 include/attention.h
+ create mode 100644 src/attention.cpp
+ create mode 100644 src/test_attention.cpp
+ create mode 100755 test_attention
+aakash@pop-os:~/LLM_Parallel$
