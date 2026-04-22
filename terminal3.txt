@@ -1,0 +1,1724 @@
+aakash@pop-os:~$ cd LLM_Parallel
+aakash@pop-os:~/LLM_Parallel$ ls
+data     llm_build_progress.svg  results  terminal2.txt  test_attention  test_matmul
+include  README.md               src      terminal.txt   test_layernorm  test_softmax
+aakash@pop-os:~/LLM_Parallel$ cd src
+aakash@pop-os:~/LLM_Parallel/src$ ls
+attention.cpp  matmul.cpp   test_attention.cpp  test_matmul.cpp
+layernorm.cpp  softmax.cpp  test_layernorm.cpp  test_softmax.cpp
+aakash@pop-os:~/LLM_Parallel/src$ touch src/ffn.cpp include/ffn.h
+nano include/ffn.h
+touch: cannot touch 'src/ffn.cpp': No such file or directory
+touch: cannot touch 'include/ffn.h': No such file or directory
+aakash@pop-os:~/LLM_Parallel/src$ ls
+attention.cpp  matmul.cpp   test_attention.cpp  test_matmul.cpp
+layernorm.cpp  softmax.cpp  test_layernorm.cpp  test_softmax.cpp
+aakash@pop-os:~/LLM_Parallel/src$ cd ..
+aakash@pop-os:~/LLM_Parallel$ touch src/ffn.cpp include/ffn.h
+aakash@pop-os:~/LLM_Parallel$ nano include/ffn.h
+aakash@pop-os:~/LLM_Parallel$ nano src/ffn.cpp
+aakash@pop-os:~/LLM_Parallel$ nano src/test_ffn.cpp
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/matmul.cpp src/ffn.cpp src/test_ffn.cpp -o test_ffn && ./test_ffn
+In file included from src/ffn.cpp:1:
+include/ffn.h:30:2: error: #endif without #if
+   30 | #endif
+      |  ^~~~~
+include/ffn.h:1:3: error: ‘GNU’ does not name a type
+    1 |   GNU nano 7.2                             include/ffn.h *
+      |   ^~~
+In file included from /usr/include/c++/13/bits/stl_algobase.h:62,
+                 from /usr/include/c++/13/vector:62,
+                 from include/ffn.h:4:
+/usr/include/c++/13/ext/type_traits.h:164:35: error: ‘constexpr const bool __gnu_cxx::__is_null_pointer’ redeclared as different kind of entity
+  164 |   __is_null_pointer(std::nullptr_t)
+      |                                   ^
+/usr/include/c++/13/ext/type_traits.h:159:5: note: previous declaration ‘template<class _Type> constexpr bool __gnu_cxx::__is_null_pointer(_Type)’
+  159 |     __is_null_pointer(_Type)
+      |     ^~~~~~~~~~~~~~~~~
+/usr/include/c++/13/ext/type_traits.h:164:26: error: ‘nullptr_t’ is not a member of ‘std’
+  164 |   __is_null_pointer(std::nullptr_t)
+      |                          ^~~~~~~~~
+In file included from /usr/include/c++/13/bits/stl_pair.h:60,
+                 from /usr/include/c++/13/bits/stl_algobase.h:64:
+/usr/include/c++/13/type_traits:275:27: error: ‘size_t’ has not been declared
+  275 |   template <typename _Tp, size_t = sizeof(_Tp)>
+      |                           ^~~~~~
+/usr/include/c++/13/type_traits:510:26: error: ‘std::size_t’ has not been declared
+  510 |   template<typename _Tp, std::size_t _Size>
+      |                          ^~~
+/usr/include/c++/13/type_traits:511:25: error: ‘_Size’ was not declared in this scope
+  511 |     struct is_array<_Tp[_Size]>
+      |                         ^~~~~
+/usr/include/c++/13/type_traits:511:31: error: template argument 1 is invalid
+  511 |     struct is_array<_Tp[_Size]>
+      |                               ^
+/usr/include/c++/13/type_traits:617:33: error: ‘nullptr_t’ is not a member of ‘std’
+  617 |     struct is_null_pointer<std::nullptr_t>
+      |                                 ^~~~~~~~~
+/usr/include/c++/13/type_traits:617:42: error: template argument 1 is invalid
+  617 |     struct is_null_pointer<std::nullptr_t>
+      |                                          ^
+/usr/include/c++/13/type_traits:621:48: error: template argument 1 is invalid
+  621 |     struct is_null_pointer<const std::nullptr_t>
+      |                                                ^
+/usr/include/c++/13/type_traits:625:51: error: template argument 1 is invalid
+  625 |     struct is_null_pointer<volatile std::nullptr_t>
+      |                                                   ^
+/usr/include/c++/13/type_traits:629:57: error: template argument 1 is invalid
+  629 |     struct is_null_pointer<const volatile std::nullptr_t>
+      |                                                         ^
+/usr/include/c++/13/type_traits:914:26: error: ‘size_t’ has not been declared
+  914 |   template<typename _Tp, size_t _Size>
+      |                          ^~~~~~
+/usr/include/c++/13/type_traits:915:40: error: ‘_Size’ was not declared in this scope
+  915 |     struct __is_array_known_bounds<_Tp[_Size]>
+      |                                        ^~~~~
+/usr/include/c++/13/type_traits:915:46: error: template argument 1 is invalid
+  915 |     struct __is_array_known_bounds<_Tp[_Size]>
+      |                                              ^
+/usr/include/c++/13/type_traits:1348:37: error: ‘size_t’ is not a member of ‘std’
+ 1348 |     : public integral_constant<std::size_t, alignof(_Tp)>
+      |                                     ^~~~~~
+/usr/include/c++/13/type_traits:1348:57: error: template argument 1 is invalid
+ 1348 |     : public integral_constant<std::size_t, alignof(_Tp)>
+      |                                                         ^
+/usr/include/c++/13/type_traits:1348:57: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1357:37: error: ‘size_t’ is not a member of ‘std’
+ 1357 |     : public integral_constant<std::size_t, 0> { };
+      |                                     ^~~~~~
+/usr/include/c++/13/type_traits:1357:46: error: template argument 1 is invalid
+ 1357 |     : public integral_constant<std::size_t, 0> { };
+      |                                              ^
+/usr/include/c++/13/type_traits:1357:46: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1359:26: error: ‘std::size_t’ has not been declared
+ 1359 |   template<typename _Tp, std::size_t _Size>
+      |                          ^~~
+/usr/include/c++/13/type_traits:1360:21: error: ‘_Size’ was not declared in this scope
+ 1360 |     struct rank<_Tp[_Size]>
+      |                     ^~~~~
+/usr/include/c++/13/type_traits:1360:27: error: template argument 1 is invalid
+ 1360 |     struct rank<_Tp[_Size]>
+      |                           ^
+/usr/include/c++/13/type_traits:1361:37: error: ‘size_t’ is not a member of ‘std’
+ 1361 |     : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+      |                                     ^~~~~~
+/usr/include/c++/13/type_traits:1361:65: error: template argument 1 is invalid
+ 1361 |     : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+      |                                                                 ^
+/usr/include/c++/13/type_traits:1361:65: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1365:37: error: ‘size_t’ is not a member of ‘std’
+ 1365 |     : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+      |                                     ^~~~~~
+/usr/include/c++/13/type_traits:1365:65: error: template argument 1 is invalid
+ 1365 |     : public integral_constant<std::size_t, 1 + rank<_Tp>::value> { };
+      |                                                                 ^
+/usr/include/c++/13/type_traits:1365:65: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1370:32: error: ‘size_t’ was not declared in this scope
+ 1370 |     : public integral_constant<size_t, 0> { };
+      |                                ^~~~~~
+/usr/include/c++/13/type_traits:1:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // C++11 <type_traits> -*- C++ -*-
+/usr/include/c++/13/type_traits:1370:41: error: template argument 1 is invalid
+ 1370 |     : public integral_constant<size_t, 0> { };
+      |                                         ^
+/usr/include/c++/13/type_traits:1370:41: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1372:26: error: ‘size_t’ has not been declared
+ 1372 |   template<typename _Tp, size_t _Size>
+      |                          ^~~~~~
+/usr/include/c++/13/type_traits:1373:23: error: ‘_Size’ was not declared in this scope
+ 1373 |     struct extent<_Tp[_Size], 0>
+      |                       ^~~~~
+/usr/include/c++/13/type_traits:1373:32: error: template argument 1 is invalid
+ 1373 |     struct extent<_Tp[_Size], 0>
+      |                                ^
+/usr/include/c++/13/type_traits:1374:32: error: ‘size_t’ was not declared in this scope
+ 1374 |     : public integral_constant<size_t, _Size> { };
+      |                                ^~~~~~
+/usr/include/c++/13/type_traits:1374:32: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:1374:40: error: ‘_Size’ was not declared in this scope
+ 1374 |     : public integral_constant<size_t, _Size> { };
+      |                                        ^~~~~
+/usr/include/c++/13/type_traits:1374:45: error: template argument 1 is invalid
+ 1374 |     : public integral_constant<size_t, _Size> { };
+      |                                             ^
+/usr/include/c++/13/type_traits:1374:45: error: template argument 2 is invalid
+/usr/include/c++/13/type_traits:1376:42: error: ‘size_t’ has not been declared
+ 1376 |   template<typename _Tp, unsigned _Uint, size_t _Size>
+      |                                          ^~~~~~
+/usr/include/c++/13/type_traits:1377:23: error: ‘_Size’ was not declared in this scope
+ 1377 |     struct extent<_Tp[_Size], _Uint>
+      |                       ^~~~~
+/usr/include/c++/13/type_traits:1377:36: error: template argument 1 is invalid
+ 1377 |     struct extent<_Tp[_Size], _Uint>
+      |                                    ^
+/usr/include/c++/13/type_traits:1382:32: error: ‘size_t’ was not declared in this scope
+ 1382 |     : public integral_constant<size_t, 0> { };
+      |                                ^~~~~~
+/usr/include/c++/13/type_traits:1382:32: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:1382:41: error: template argument 1 is invalid
+ 1382 |     : public integral_constant<size_t, 0> { };
+      |                                         ^
+/usr/include/c++/13/type_traits:1382:41: note: invalid template non-type parameter
+/usr/include/c++/13/type_traits:1764:26: error: ‘size_t’ does not name a type
+ 1764 |       { static constexpr size_t __size = sizeof(_Tp); };
+      |                          ^~~~~~
+/usr/include/c++/13/type_traits:1764:26: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:1766:14: error: ‘size_t’ has not been declared
+ 1766 |     template<size_t _Sz, typename _Tp, bool = (_Sz <= _Tp::__size)>
+      |              ^~~~~~
+/usr/include/c++/13/type_traits:1766:48: error: ‘_Sz’ was not declared in this scope
+ 1766 |     template<size_t _Sz, typename _Tp, bool = (_Sz <= _Tp::__size)>
+      |                                                ^~~
+/usr/include/c++/13/type_traits:1767:14: error: no default argument for ‘_Tp’
+ 1767 |       struct __select;
+      |              ^~~~~~~~
+/usr/include/c++/13/type_traits:1769:14: error: ‘size_t’ has not been declared
+ 1769 |     template<size_t _Sz, typename _Uint, typename... _UInts>
+      |              ^~~~~~
+/usr/include/c++/13/type_traits:1770:23: error: ‘_Sz’ was not declared in this scope
+ 1770 |       struct __select<_Sz, _List<_Uint, _UInts...>, true>
+      |                       ^~~
+/usr/include/c++/13/type_traits:1770:57: error: template argument 1 is invalid
+ 1770 |       struct __select<_Sz, _List<_Uint, _UInts...>, true>
+      |                                                         ^
+/usr/include/c++/13/type_traits:1773:14: error: ‘size_t’ has not been declared
+ 1773 |     template<size_t _Sz, typename _Uint, typename... _UInts>
+      |              ^~~~~~
+/usr/include/c++/13/type_traits:1774:23: error: ‘_Sz’ was not declared in this scope
+ 1774 |       struct __select<_Sz, _List<_Uint, _UInts...>, false>
+      |                       ^~~
+/usr/include/c++/13/type_traits:1774:58: error: template argument 1 is invalid
+ 1774 |       struct __select<_Sz, _List<_Uint, _UInts...>, false>
+      |                                                          ^
+/usr/include/c++/13/type_traits:1775:18: error: ‘_Sz’ was not declared in this scope
+ 1775 |       : __select<_Sz, _List<_UInts...>>
+      |                  ^~~
+/usr/include/c++/13/type_traits:1775:38: error: template argument 1 is invalid
+ 1775 |       : __select<_Sz, _List<_UInts...>>
+      |                                      ^~
+/usr/include/c++/13/type_traits:1766:60: error: ‘__size’ is not a member of ‘std::__make_unsigned_selector_base::_List<unsigned char, short unsigned int, unsigned int, long unsigned int, long long unsigned int>’
+ 1766 |     template<size_t _Sz, typename _Tp, bool = (_Sz <= _Tp::__size)>
+      |                                                            ^~~~~~
+/usr/include/c++/13/type_traits:1788:68: error: template argument 3 is invalid
+ 1788 |       using __unsigned_type = typename __select<sizeof(_Tp), _UInts>::__type;
+      |                                                                    ^
+/usr/include/c++/13/type_traits:1792:47: error: ‘__unsigned_type’ was not declared in this scope
+ 1792 |         = typename __match_cv_qualifiers<_Tp, __unsigned_type>::__type;
+      |                                               ^~~~~~~~~~~~~~~
+/usr/include/c++/13/type_traits:1792:62: error: template argument 2 is invalid
+ 1792 |         = typename __match_cv_qualifiers<_Tp, __unsigned_type>::__type;
+      |                                                              ^
+/usr/include/c++/13/type_traits:1803:68: error: ‘__type’ in ‘class std::__make_unsigned_selector<wchar_t, false, true>’ does not name a type
+ 1803 |         = typename __make_unsigned_selector<wchar_t, false, true>::__type;
+      |                                                                    ^~~~~~
+/usr/include/c++/13/type_traits:1819:69: error: ‘__type’ in ‘class std::__make_unsigned_selector<char16_t, false, true>’ does not name a type
+ 1819 |         = typename __make_unsigned_selector<char16_t, false, true>::__type;
+      |                                                                     ^~~~~~
+/usr/include/c++/13/type_traits:1826:69: error: ‘__type’ in ‘class std::__make_unsigned_selector<char32_t, false, true>’ does not name a type
+ 1826 |         = typename __make_unsigned_selector<char32_t, false, true>::__type;
+      |                                                                     ^~~~~~
+/usr/include/c++/13/type_traits: In instantiation of ‘class std::__make_unsigned_selector<wchar_t, true, false>’:
+/usr/include/c++/13/type_traits:1921:62:   required from ‘class std::__make_signed_selector<wchar_t, false, true>’
+/usr/include/c++/13/type_traits:1935:57:   required from here
+/usr/include/c++/13/type_traits:1749:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<wchar_t>’
+ 1749 |       using __unsigned_type
+      |             ^~~~~~~~~~~~~~~
+/usr/include/c++/13/type_traits:1753:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<wchar_t>’
+ 1753 |       using __type
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:1935:66: error: invalid combination of multiple type-specifiers
+ 1935 |         = typename __make_signed_selector<wchar_t, false, true>::__type;
+      |                                                                  ^~~~~~
+/usr/include/c++/13/type_traits: In instantiation of ‘class std::__make_unsigned_selector<char16_t, true, false>’:
+/usr/include/c++/13/type_traits:1921:62:   required from ‘class std::__make_signed_selector<char16_t, false, true>’
+/usr/include/c++/13/type_traits:1951:58:   required from here
+/usr/include/c++/13/type_traits:1749:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<char16_t>’
+ 1749 |       using __unsigned_type
+      |             ^~~~~~~~~~~~~~~
+/usr/include/c++/13/type_traits:1753:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<char16_t>’
+ 1753 |       using __type
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:1951:67: error: invalid combination of multiple type-specifiers
+ 1951 |         = typename __make_signed_selector<char16_t, false, true>::__type;
+      |                                                                   ^~~~~~
+/usr/include/c++/13/type_traits: In instantiation of ‘class std::__make_unsigned_selector<char32_t, true, false>’:
+/usr/include/c++/13/type_traits:1921:62:   required from ‘class std::__make_signed_selector<char32_t, false, true>’
+/usr/include/c++/13/type_traits:1958:58:   required from here
+/usr/include/c++/13/type_traits:1749:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<char32_t>’
+ 1749 |       using __unsigned_type
+      |             ^~~~~~~~~~~~~~~
+/usr/include/c++/13/type_traits:1753:13: error: no type named ‘__type’ in ‘struct std::__make_unsigned<char32_t>’
+ 1753 |       using __type
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:1958:67: error: invalid combination of multiple type-specifiers
+ 1958 |         = typename __make_signed_selector<char32_t, false, true>::__type;
+      |                                                                   ^~~~~~
+/usr/include/c++/13/type_traits:1993:26: error: ‘std::size_t’ has not been declared
+ 1993 |   template<typename _Tp, std::size_t _Size>
+      |                          ^~~
+/usr/include/c++/13/type_traits:1994:30: error: ‘_Size’ was not declared in this scope
+ 1994 |     struct remove_extent<_Tp[_Size]>
+      |                              ^~~~~
+/usr/include/c++/13/type_traits:1994:36: error: template argument 1 is invalid
+ 1994 |     struct remove_extent<_Tp[_Size]>
+      |                                    ^
+/usr/include/c++/13/type_traits:2006:26: error: ‘std::size_t’ has not been declared
+ 2006 |   template<typename _Tp, std::size_t _Size>
+      |                          ^~~
+/usr/include/c++/13/type_traits:2007:35: error: ‘_Size’ was not declared in this scope
+ 2007 |     struct remove_all_extents<_Tp[_Size]>
+      |                                   ^~~~~
+/usr/include/c++/13/type_traits:2007:41: error: template argument 1 is invalid
+ 2007 |     struct remove_all_extents<_Tp[_Size]>
+      |                                         ^
+/usr/include/c++/13/type_traits:2072:12: error: ‘std::size_t’ has not been declared
+ 2072 |   template<std::size_t _Len>
+      |            ^~~
+/usr/include/c++/13/type_traits:2077:30: error: ‘_Len’ was not declared in this scope
+ 2077 |         unsigned char __data[_Len];
+      |                              ^~~~
+/usr/include/c++/13/type_traits:2095:12: error: ‘std::size_t’ has not been declared
+ 2095 |   template<std::size_t _Len, std::size_t _Align =
+      |            ^~~
+/usr/include/c++/13/type_traits:2095:30: error: ‘std::size_t’ has not been declared
+ 2095 |   template<std::size_t _Len, std::size_t _Align =
+      |                              ^~~
+/usr/include/c++/13/type_traits:2096:55: error: ‘_Len’ was not declared in this scope
+ 2096 |            __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+      |                                                       ^~~~
+/usr/include/c++/13/type_traits:2096:59: error: template argument 1 is invalid
+ 2096 |            __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+      |                                                           ^
+/usr/include/c++/13/type_traits:2103:30: error: ‘_Len’ was not declared in this scope
+ 2103 |         unsigned char __data[_Len];
+      |                              ^~~~
+/usr/include/c++/13/type_traits:2104:44: error: ‘_Align’ was not declared in this scope
+ 2104 |         struct __attribute__((__aligned__((_Align)))) { } __align;
+      |                                            ^~~~~~
+/usr/include/c++/13/type_traits:2111:20: error: ‘size_t’ does not name a type
+ 2111 |       static const size_t _S_alignment = 0;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2111:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2112:20: error: ‘size_t’ does not name a type
+ 2112 |       static const size_t _S_size = 0;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2112:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2118:20: error: ‘size_t’ does not name a type
+ 2118 |       static const size_t _S_alignment =
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2118:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2121:20: error: ‘size_t’ does not name a type
+ 2121 |       static const size_t _S_size =
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2121:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2141:13: error: ‘size_t’ has not been declared
+ 2141 |   template <size_t _Len, typename... _Types>
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:2150:20: error: ‘size_t’ does not name a type
+ 2150 |       static const size_t _S_len = _Len > __strictest::_S_size
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2150:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2154:20: error: ‘size_t’ does not name a type
+ 2154 |       static const size_t alignment_value = __strictest::_S_alignment;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:2154:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2156:40: error: ‘_S_len’ was not declared in this scope
+ 2156 |       typedef typename aligned_storage<_S_len, alignment_value>::type type;
+      |                                        ^~~~~~
+/usr/include/c++/13/type_traits:2156:48: error: ‘alignment_value’ was not declared in this scope; did you mean ‘alignment_of’?
+ 2156 |       typedef typename aligned_storage<_S_len, alignment_value>::type type;
+      |                                                ^~~~~~~~~~~~~~~
+      |                                                alignment_of
+/usr/include/c++/13/type_traits:2156:63: error: template argument 1 is invalid
+ 2156 |       typedef typename aligned_storage<_S_len, alignment_value>::type type;
+      |                                                               ^
+/usr/include/c++/13/type_traits:2156:63: error: template argument 2 is invalid
+/usr/include/c++/13/type_traits:2159:13: error: ‘size_t’ has not been declared
+ 2159 |   template <size_t _Len, typename... _Types>
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:2160:11: error: ‘size_t’ does not name a type
+ 2160 |     const size_t aligned_union<_Len, _Types...>::alignment_value;
+      |           ^~~~~~
+/usr/include/c++/13/type_traits:2160:11: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:2174:26: error: ‘size_t’ has not been declared
+ 2174 |   template<typename _Up, size_t _Nm>
+      |                          ^~~~~~
+/usr/include/c++/13/type_traits:2175:33: error: ‘_Nm’ was not declared in this scope
+ 2175 |     struct __decay_selector<_Up[_Nm]>
+      |                                 ^~~
+/usr/include/c++/13/type_traits:2175:37: error: template argument 1 is invalid
+ 2175 |     struct __decay_selector<_Up[_Nm]>
+      |                                     ^
+/usr/include/c++/13/type_traits:2596:12: error: ‘size_t’ has not been declared
+ 2596 |   template<size_t _Len, size_t _Align =
+      |            ^~~~~~
+/usr/include/c++/13/type_traits:2596:25: error: ‘size_t’ has not been declared
+ 2596 |   template<size_t _Len, size_t _Align =
+      |                         ^~~~~~
+/usr/include/c++/13/type_traits:2597:56: error: ‘_Len’ was not declared in this scope
+ 2597 |             __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+      |                                                        ^~~~
+/usr/include/c++/13/type_traits:2597:60: error: template argument 1 is invalid
+ 2597 |             __alignof__(typename __aligned_storage_msa<_Len>::__type)>
+      |                                                            ^
+/usr/include/c++/13/type_traits:2598:78: error: ‘_Len’ was not declared in this scope
+ 2598 |  using aligned_storage_t _GLIBCXX23_DEPRECATED = typename aligned_storage<_Len, _Align>::type;
+      |                                                                           ^~~~
+
+/usr/include/c++/13/type_traits:2598:84: error: ‘_Align’ was not declared in this scope
+ 2598 |  aligned_storage_t _GLIBCXX23_DEPRECATED = typename aligned_storage<_Len, _Align>::type;
+      |                                                                           ^~~~~~
+
+/usr/include/c++/13/type_traits:2598:90: error: template argument 1 is invalid
+ 2598 | igned_storage_t _GLIBCXX23_DEPRECATED = typename aligned_storage<_Len, _Align>::type;
+      |                                                                              ^
+
+/usr/include/c++/13/type_traits:2598:90: error: template argument 2 is invalid
+/usr/include/c++/13/type_traits:2600:13: error: ‘size_t’ has not been declared
+ 2600 |   template <size_t _Len, typename... _Types>
+      |             ^~~~~~
+/usr/include/c++/13/type_traits:2601:74: error: ‘_Len’ was not declared in this scope
+ 2601 |     using aligned_union_t _GLIBCXX23_DEPRECATED = typename aligned_union<_Len, _Types...>::type;
+      |                                                                          ^~~~
+/usr/include/c++/13/type_traits:2601:89: error: template argument 1 is invalid
+ 2601 | ligned_union_t _GLIBCXX23_DEPRECATED = typename aligned_union<_Len, _Types...>::type;
+      |                                                                              ^
+
+/usr/include/c++/13/type_traits:2728:26: error: ‘size_t’ has not been declared
+ 2728 |   template<typename _Tp, size_t _Nm>
+      |                          ^~~~~~
+/usr/include/c++/13/type_traits:2732:21: error: ‘_Nm’ was not declared in this scope
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                     ^~~
+/usr/include/c++/13/type_traits:2732:24: error: ‘template<class _Tp, <declaration error> > std::__enable_if_t<std::__is_swappable<_Tp>::value> std::swap’ conflicts with a previous declaration
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                        ^
+/usr/include/c++/13/type_traits:2724:5: note: previous declaration ‘std::_Require<std::__not_<std::__is_tuple_like<_Tp> >, std::is_move_constructible<_Tp>, std::is_move_assignable<_Tp> > std::swap(_Tp&, _Tp&)’
+ 2724 |     swap(_Tp&, _Tp&)
+      |     ^~~~
+/usr/include/c++/13/type_traits:2732:16: error: ‘__a’ was not declared in this scope
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                ^~~
+/usr/include/c++/13/type_traits:2732:21: error: ‘_Nm’ was not declared in this scope
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                     ^~~
+/usr/include/c++/13/type_traits:2732:33: error: ‘__b’ was not declared in this scope
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                 ^~~
+/usr/include/c++/13/type_traits:2732:38: error: ‘_Nm’ was not declared in this scope
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                      ^~~
+/usr/include/c++/13/type_traits:2732:43: error: expected ‘;’ before ‘noexcept’
+ 2732 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                           ^
+      |                                           ;
+ 2733 |     noexcept(__is_nothrow_swappable<_Tp>::value);
+      |     ~~~~~~~~
+/usr/include/c++/13/type_traits:3168:25: error: ‘size_t’ has not been declared
+ 3168 | template <typename _Tp, size_t _Num>
+      |                         ^~~~~~
+/usr/include/c++/13/type_traits:3169:40: error: ‘_Num’ was not declared in this scope
+ 3169 |   inline constexpr bool is_array_v<_Tp[_Num]> = true;
+      |                                        ^~~~
+/usr/include/c++/13/type_traits:3169:25: error: template argument 1 is invalid
+ 3169 |   inline constexpr bool is_array_v<_Tp[_Num]> = true;
+      |                         ^~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/type_traits:3169:25: error: template-id ‘is_array_v<<expression error> >’ for ‘std::is_array_v’ does not match any template declaration
+/usr/include/c++/13/type_traits:3165:25: note: candidate is: ‘template<class _Tp> constexpr const bool std::is_array_v<_Tp>’
+ 3165 |   inline constexpr bool is_array_v = false;
+      |                         ^~~~~~~~~~
+/usr/include/c++/13/type_traits:3331:20: error: ‘size_t’ does not name a type
+ 3331 |   inline constexpr size_t alignment_of_v = alignment_of<_Tp>::value;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3331:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3334:20: error: ‘size_t’ does not name a type
+ 3334 |   inline constexpr size_t rank_v = 0;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3334:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3335:25: error: ‘size_t’ has not been declared
+ 3335 | template <typename _Tp, size_t _Size>
+      |                         ^~~~~~
+/usr/include/c++/13/type_traits:3336:20: error: ‘size_t’ does not name a type
+ 3336 |   inline constexpr size_t rank_v<_Tp[_Size]> = 1 + rank_v<_Tp>;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3336:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3338:20: error: ‘size_t’ does not name a type
+ 3338 |   inline constexpr size_t rank_v<_Tp[]> = 1 + rank_v<_Tp>;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3338:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3341:20: error: ‘size_t’ does not name a type
+ 3341 |   inline constexpr size_t extent_v = 0;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3341:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3342:25: error: ‘size_t’ has not been declared
+ 3342 | template <typename _Tp, size_t _Size>
+      |                         ^~~~~~
+/usr/include/c++/13/type_traits:3343:20: error: ‘size_t’ does not name a type
+ 3343 |   inline constexpr size_t extent_v<_Tp[_Size], 0> = _Size;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3343:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3344:40: error: ‘size_t’ has not been declared
+ 3344 | template <typename _Tp, unsigned _Idx, size_t _Size>
+      |                                        ^~~~~~
+/usr/include/c++/13/type_traits:3345:20: error: ‘size_t’ does not name a type
+ 3345 |   inline constexpr size_t extent_v<_Tp[_Size], _Idx> = extent_v<_Tp, _Idx - 1>;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3345:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3347:20: error: ‘size_t’ does not name a type
+ 3347 |   inline constexpr size_t extent_v<_Tp[], 0> = 0;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3347:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/type_traits:3349:20: error: ‘size_t’ does not name a type
+ 3349 |   inline constexpr size_t extent_v<_Tp[], _Idx> = extent_v<_Tp, _Idx - 1>;
+      |                    ^~~~~~
+/usr/include/c++/13/type_traits:3349:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+In file included from /usr/include/c++/13/bits/stl_pair.h:61:
+/usr/include/c++/13/bits/move.h:205:26: error: ‘size_t’ has not been declared
+  205 |   template<typename _Tp, size_t _Nm>
+      |                          ^~~~~~
+/usr/include/c++/13/bits/move.h:213:21: error: ‘_Nm’ was not declared in this scope
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                     ^~~
+/usr/include/c++/13/bits/move.h:213:24: error: ‘template<class _Tp, <declaration error> > typename std::enable_if<std::__is_swappable<_Tp>::value, void>::type std::swap’ conflicts with a previous declaration
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                        ^
+/usr/include/c++/13/bits/move.h:189:5: note: previous declaration ‘std::_Require<std::__not_<std::__is_tuple_like<_Tp> >, std::is_move_constructible<_Tp>, std::is_move_assignable<_Tp> > std::swap(_Tp&, _Tp&)’
+  189 |     swap(_Tp& __a, _Tp& __b)
+      |     ^~~~
+/usr/include/c++/13/bits/move.h:213:16: error: ‘__a’ was not declared in this scope
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                ^~~
+/usr/include/c++/13/bits/move.h:213:21: error: ‘_Nm’ was not declared in this scope
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                     ^~~
+/usr/include/c++/13/bits/move.h:213:33: error: ‘__b’ was not declared in this scope
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                 ^~~
+/usr/include/c++/13/bits/move.h:213:38: error: ‘_Nm’ was not declared in this scope
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                      ^~~
+/usr/include/c++/13/bits/move.h:213:43: error: expected ‘;’ before ‘noexcept’
+  213 |     swap(_Tp (&__a)[_Nm], _Tp (&__b)[_Nm])
+      |                                           ^
+      |                                           ;
+In file included from /usr/include/c++/13/bits/stl_pair.h:62:
+/usr/include/c++/13/bits/utility.h:58:12: error: ‘size_t’ has not been declared
+   58 |            size_t = tuple_size<_Tp>::value>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:62:56: note: invalid template non-type parameter
+   62 |     struct tuple_size<const __enable_if_has_tuple_size<_Tp>>
+      |                                                        ^~~
+/usr/include/c++/13/bits/utility.h:62:59: error: template argument 1 is invalid
+   62 |     struct tuple_size<const __enable_if_has_tuple_size<_Tp>>
+      |                                                           ^~
+/usr/include/c++/13/bits/utility.h:66:59: note: invalid template non-type parameter
+   66 |     struct tuple_size<volatile __enable_if_has_tuple_size<_Tp>>
+      |                                                           ^~~
+/usr/include/c++/13/bits/utility.h:66:62: error: template argument 1 is invalid
+   66 |     struct tuple_size<volatile __enable_if_has_tuple_size<_Tp>>
+      |                                                              ^~
+/usr/include/c++/13/bits/utility.h:70:65: note: invalid template non-type parameter
+   70 |     struct tuple_size<const volatile __enable_if_has_tuple_size<_Tp>>
+      |                                                                 ^~~
+/usr/include/c++/13/bits/utility.h:70:68: error: template argument 1 is invalid
+   70 |     struct tuple_size<const volatile __enable_if_has_tuple_size<_Tp>>
+      |                                                                    ^~
+/usr/include/c++/13/bits/utility.h:75:22: error: ‘size_t’ does not name a type
+   75 |     inline constexpr size_t tuple_size_v = tuple_size<_Tp>::value;
+      |                      ^~~~~~
+/usr/include/c++/13/bits/utility.h:1:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // Utilities used throughout the library -*- C++ -*-
+/usr/include/c++/13/bits/utility.h:79:12: error: ‘size_t’ has not been declared
+   79 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:80:12: error: no default argument for ‘_Tp’
+   80 |     struct tuple_element;
+      |            ^~~~~~~~~~~~~
+/usr/include/c++/13/bits/utility.h:83:12: error: ‘size_t’ has not been declared
+   83 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:84:54: error: ‘__i’ was not declared in this scope
+   84 |     using __tuple_element_t = typename tuple_element<__i, _Tp>::type;
+      |                                                      ^~~
+/usr/include/c++/13/bits/utility.h:84:62: error: template argument 1 is invalid
+   84 |     using __tuple_element_t = typename tuple_element<__i, _Tp>::type;
+      |                                                              ^
+/usr/include/c++/13/bits/utility.h:86:12: error: ‘size_t’ has not been declared
+   86 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:87:26: error: ‘__i’ was not declared in this scope
+   87 |     struct tuple_element<__i, const _Tp>
+      |                          ^~~
+/usr/include/c++/13/bits/utility.h:87:40: error: template argument 1 is invalid
+   87 |     struct tuple_element<__i, const _Tp>
+      |                                        ^
+/usr/include/c++/13/bits/utility.h:92:12: error: ‘size_t’ has not been declared
+   92 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:93:26: error: ‘__i’ was not declared in this scope
+   93 |     struct tuple_element<__i, volatile _Tp>
+      |                          ^~~
+/usr/include/c++/13/bits/utility.h:93:43: error: template argument 1 is invalid
+   93 |     struct tuple_element<__i, volatile _Tp>
+      |                                           ^
+/usr/include/c++/13/bits/utility.h:98:12: error: ‘size_t’ has not been declared
+   98 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:99:26: error: ‘__i’ was not declared in this scope
+   99 |     struct tuple_element<__i, const volatile _Tp>
+      |                          ^~~
+/usr/include/c++/13/bits/utility.h:99:49: error: template argument 1 is invalid
+   99 |     struct tuple_element<__i, const volatile _Tp>
+      |                                                 ^
+/usr/include/c++/13/bits/utility.h:109:15: error: ‘size_t’ does not name a type
+  109 |     constexpr size_t
+      |               ^~~~~~
+/usr/include/c++/13/bits/utility.h:109:15: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/utility.h:134:12: error: ‘size_t’ has not been declared
+  134 |   template<size_t __i, typename _Tp>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:135:52: error: ‘__i’ was not declared in this scope
+  135 |     using tuple_element_t = typename tuple_element<__i, _Tp>::type;
+      |                                                    ^~~
+/usr/include/c++/13/bits/utility.h:135:60: error: template argument 1 is invalid
+  135 |     using tuple_element_t = typename tuple_element<__i, _Tp>::type;
+      |                                                            ^
+/usr/include/c++/13/bits/utility.h:140:12: error: ‘size_t’ has not been declared
+  140 |   template<size_t... _Indexes> struct _Index_tuple { };
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:143:12: error: ‘size_t’ has not been declared
+  143 |   template<size_t _Num>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:154:50: error: ‘_Num’ was not declared in this scope
+  154 |       using __type = _Index_tuple<__integer_pack(_Num)...>;
+      |                                                  ^~~~
+/usr/include/c++/13/bits/utility.h:154:55: error: expected parameter pack before ‘...’
+  154 |       using __type = _Index_tuple<__integer_pack(_Num)...>;
+      |                                                       ^~~
+/usr/include/c++/13/bits/utility.h:154:58: error: template argument 1 is invalid
+  154 |       using __type = _Index_tuple<__integer_pack(_Num)...>;
+      |                                                          ^
+/usr/include/c++/13/bits/utility.h:170:24: error: ‘size_t’ does not name a type
+  170 |       static constexpr size_t size() noexcept { return sizeof...(_Idx); }
+      |                        ^~~~~~
+/usr/include/c++/13/bits/utility.h:170:24: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/utility.h:183:12: error: ‘size_t’ has not been declared
+  183 |   template<size_t... _Idx>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:184:45: error: ‘size_t’ was not declared in this scope
+  184 |     using index_sequence = integer_sequence<size_t, _Idx...>;
+      |                                             ^~~~~~
+/usr/include/c++/13/bits/utility.h:184:45: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/utility.h:184:53: error: ‘_Idx’ was not declared in this scope
+  184 |     using index_sequence = integer_sequence<size_t, _Idx...>;
+      |                                                     ^~~~
+/usr/include/c++/13/bits/utility.h:184:57: error: expected parameter pack before ‘...’
+  184 |     using index_sequence = integer_sequence<size_t, _Idx...>;
+      |                                                         ^~~
+/usr/include/c++/13/bits/utility.h:184:60: error: template argument 1 is invalid
+  184 |     using index_sequence = integer_sequence<size_t, _Idx...>;
+      |                                                            ^
+/usr/include/c++/13/bits/utility.h:184:60: error: template argument 2 is invalid
+/usr/include/c++/13/bits/utility.h:187:12: error: ‘size_t’ has not been declared
+  187 |   template<size_t _Num>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:188:55: error: ‘size_t’ was not declared in this scope
+  188 |     using make_index_sequence = make_integer_sequence<size_t, _Num>;
+      |                                                       ^~~~~~
+/usr/include/c++/13/bits/utility.h:188:55: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/utility.h:188:63: error: ‘_Num’ was not declared in this scope
+  188 |     using make_index_sequence = make_integer_sequence<size_t, _Num>;
+      |                                                               ^~~~
+/usr/include/c++/13/bits/utility.h:188:67: error: template argument 1 is invalid
+  188 |     using make_index_sequence = make_integer_sequence<size_t, _Num>;
+      |                                                                   ^
+/usr/include/c++/13/bits/utility.h:188:67: error: template argument 2 is invalid
+/usr/include/c++/13/bits/utility.h:192:32: error: ‘make_index_sequence’ does not name a type; did you mean ‘make_integer_sequence’?
+  192 |     using index_sequence_for = make_index_sequence<sizeof...(_Types)>;
+      |                                ^~~~~~~~~~~~~~~~~~~
+      |                                make_integer_sequence
+/usr/include/c++/13/bits/utility.h:210:12: error: ‘size_t’ has not been declared
+  210 |   template<size_t _Idx> struct in_place_index_t
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:215:12: error: ‘size_t’ has not been declared
+  215 |   template<size_t _Idx>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:216:39: error: ‘_Idx’ was not declared in this scope
+  216 |     inline constexpr in_place_index_t<_Idx> in_place_index{};
+      |                                       ^~~~
+/usr/include/c++/13/bits/utility.h:216:43: error: template argument 1 is invalid
+  216 |     inline constexpr in_place_index_t<_Idx> in_place_index{};
+      |                                           ^
+/usr/include/c++/13/bits/utility.h:230:12: error: ‘size_t’ has not been declared
+  230 |   template<size_t _Np, typename... _Types>
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:246:12: error: ‘size_t’ has not been declared
+  246 |   template<size_t _Np, typename _Tp0, typename _Tp1, typename _Tp2,
+      |            ^~~~~~
+/usr/include/c++/13/bits/utility.h:251:22: error: ‘_Np’ was not declared in this scope
+  251 |     struct _Nth_type<_Np, _Tp0, _Tp1, _Tp2, _Rest...>
+      |                      ^~~
+/usr/include/c++/13/bits/utility.h:251:53: error: template argument 1 is invalid
+  251 |     struct _Nth_type<_Np, _Tp0, _Tp1, _Tp2, _Rest...>
+      |                                                     ^
+/usr/include/c++/13/bits/utility.h:252:17: error: ‘_Np’ was not declared in this scope
+  252 |     : _Nth_type<_Np - 3, _Rest...>
+      |                 ^~~
+/usr/include/c++/13/bits/utility.h:252:34: error: template argument 1 is invalid
+  252 |     : _Nth_type<_Np - 3, _Rest...>
+      |                                  ^
+/usr/include/c++/13/bits/stl_pair.h:92:12: error: ‘size_t’ has not been declared
+   92 |   template<size_t...>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:235:36: error: ‘size_t’ has not been declared
+  235 |       template<typename... _Args1, size_t... _Indexes1,
+      |                                    ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:236:36: error: ‘size_t’ has not been declared
+  236 |                typename... _Args2, size_t... _Indexes2>
+      |                                    ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:239:27: error: ‘_Indexes1’ was not declared in this scope
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                           ^~~~~~~~~
+/usr/include/c++/13/bits/stl_pair.h:239:36: error: expected parameter pack before ‘...’
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                                    ^~~
+/usr/include/c++/13/bits/stl_pair.h:239:39: error: template argument 1 is invalid
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                                       ^
+/usr/include/c++/13/bits/stl_pair.h:239:55: error: ‘_Indexes2’ was not declared in this scope
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                                                       ^~~~~~~~~
+/usr/include/c++/13/bits/stl_pair.h:239:64: error: expected parameter pack before ‘...’
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                                                                ^~~
+/usr/include/c++/13/bits/stl_pair.h:239:67: error: template argument 1 is invalid
+  239 |              _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>);
+      |                                                                   ^
+/usr/include/c++/13/bits/stl_pair.h:950:32: error: ‘size_t’ was not declared in this scope
+  950 |     : public integral_constant<size_t, 2> { };
+      |                                ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:63:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   62 | # include <bits/utility.h> // for std::tuple_element, std::tuple_size
+  +++ |+#include <cstddef>
+   63 | #endif
+/usr/include/c++/13/bits/stl_pair.h:950:41: error: template argument 1 is invalid
+  950 |     : public integral_constant<size_t, 2> { };
+      |                                         ^
+/usr/include/c++/13/bits/stl_pair.h:950:41: note: invalid template non-type parameter
+/usr/include/c++/13/bits/stl_pair.h:964:22: error: ‘size_t’ does not name a type
+  964 |     inline constexpr size_t tuple_size_v<pair<_Tp1, _Tp2>> = 2;
+      |                      ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:964:22: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_pair.h:967:22: error: ‘size_t’ does not name a type
+  967 |     inline constexpr size_t tuple_size_v<const pair<_Tp1, _Tp2>> = 2;
+      |                      ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:967:22: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_pair.h:977:12: error: ‘size_t’ has not been declared
+  977 |   template<size_t _Int>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:1033:12: error: ‘size_t’ has not been declared
+ 1033 |   template<size_t _Int, class _Tp1, class _Tp2>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:1034:38: error: ‘_Int’ was not declared in this scope
+ 1034 |     constexpr typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&
+      |                                      ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1034:59: error: template argument 1 is invalid
+ 1034 |     constexpr typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&
+      |                                                           ^~
+/usr/include/c++/13/bits/stl_pair.h: In function ‘constexpr int& std::get(pair<_Tp1, _Tp2>&)’:
+/usr/include/c++/13/bits/stl_pair.h:1036:25: error: ‘_Int’ was not declared in this scope
+ 1036 |     { return __pair_get<_Int>::__get(__in); }
+      |                         ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1036:29: error: template argument 1 is invalid
+ 1036 |     { return __pair_get<_Int>::__get(__in); }
+      |                             ^
+/usr/include/c++/13/bits/stl_pair.h: At global scope:
+/usr/include/c++/13/bits/stl_pair.h:1038:12: error: ‘size_t’ has not been declared
+ 1038 |   template<size_t _Int, class _Tp1, class _Tp2>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:1039:38: error: ‘_Int’ was not declared in this scope
+ 1039 |     constexpr typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&&
+      |                                      ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1039:59: error: template argument 1 is invalid
+ 1039 |     constexpr typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&&
+      |                                                           ^~
+/usr/include/c++/13/bits/stl_pair.h: In function ‘constexpr int&& std::get(pair<_Tp1, _Tp2>&&)’:
+/usr/include/c++/13/bits/stl_pair.h:1041:25: error: ‘_Int’ was not declared in this scope
+ 1041 |     { return __pair_get<_Int>::__move_get(std::move(__in)); }
+      |                         ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1041:29: error: template argument 1 is invalid
+ 1041 |     { return __pair_get<_Int>::__move_get(std::move(__in)); }
+      |                             ^
+/usr/include/c++/13/bits/stl_pair.h: At global scope:
+/usr/include/c++/13/bits/stl_pair.h:1043:12: error: ‘size_t’ has not been declared
+ 1043 |   template<size_t _Int, class _Tp1, class _Tp2>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:1044:44: error: ‘_Int’ was not declared in this scope
+ 1044 |     constexpr const typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&
+      |                                            ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1044:65: error: template argument 1 is invalid
+ 1044 |     constexpr const typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&
+      |                                                                 ^~
+/usr/include/c++/13/bits/stl_pair.h: In function ‘constexpr const int& std::get(const pair<_Tp1, _Tp2>&)’:
+/usr/include/c++/13/bits/stl_pair.h:1046:25: error: ‘_Int’ was not declared in this scope
+ 1046 |     { return __pair_get<_Int>::__const_get(__in); }
+      |                         ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1046:29: error: template argument 1 is invalid
+ 1046 |     { return __pair_get<_Int>::__const_get(__in); }
+      |                             ^
+/usr/include/c++/13/bits/stl_pair.h: At global scope:
+/usr/include/c++/13/bits/stl_pair.h:1048:12: error: ‘size_t’ has not been declared
+ 1048 |   template<size_t _Int, class _Tp1, class _Tp2>
+      |            ^~~~~~
+/usr/include/c++/13/bits/stl_pair.h:1049:44: error: ‘_Int’ was not declared in this scope
+ 1049 |     constexpr const typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&&
+      |                                            ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1049:65: error: template argument 1 is invalid
+ 1049 |     constexpr const typename tuple_element<_Int, pair<_Tp1, _Tp2>>::type&&
+      |                                                                 ^~
+/usr/include/c++/13/bits/stl_pair.h: In function ‘constexpr const int&& std::get(const pair<_Tp1, _Tp2>&&)’:
+/usr/include/c++/13/bits/stl_pair.h:1051:25: error: ‘_Int’ was not declared in this scope
+ 1051 |     { return __pair_get<_Int>::__const_move_get(std::move(__in)); }
+      |                         ^~~~
+/usr/include/c++/13/bits/stl_pair.h:1051:29: error: template argument 1 is invalid
+ 1051 |     { return __pair_get<_Int>::__const_move_get(std::move(__in)); }
+      |                             ^
+In file included from /usr/include/c++/13/bits/stl_algobase.h:65:
+/usr/include/c++/13/bits/stl_iterator_base_types.h: At global scope:
+/usr/include/c++/13/bits/stl_iterator_base_types.h:125:67: error: ‘ptrdiff_t’ does not name a type
+  125 |   template<typename _Category, typename _Tp, typename _Distance = ptrdiff_t,
+      |                                                                   ^~~~~~~~~
+/usr/include/c++/13/bits/stl_iterator_base_types.h:1:1: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // Types used in iterator implementation -*- C++ -*-
+/usr/include/c++/13/bits/stl_iterator_base_types.h:214:15: error: ‘ptrdiff_t’ does not name a type
+  214 |       typedef ptrdiff_t                   difference_type;
+      |               ^~~~~~~~~
+/usr/include/c++/13/bits/stl_iterator_base_types.h:214:15: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_iterator_base_types.h:225:15: error: ‘ptrdiff_t’ does not name a type
+  225 |       typedef ptrdiff_t                   difference_type;
+      |               ^~~~~~~~~
+/usr/include/c++/13/bits/stl_iterator_base_types.h:225:15: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+In file included from /usr/include/c++/13/bits/stl_algobase.h:66:
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:112:5: error: ‘ptrdiff_t’ does not name a type
+  112 |     ptrdiff_t
+      |     ^~~~~~~~~
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:66:1: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   65 | #include <debug/assertions.h>
+  +++ |+#include <cstddef>
+   66 | #include <bits/stl_iterator_base_types.h>
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:118:5: error: ‘ptrdiff_t’ does not name a type
+  118 |     ptrdiff_t
+      |     ^~~~~~~~~
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:118:5: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+In file included from /usr/include/c++/13/bits/stl_iterator.h:67,
+                 from /usr/include/c++/13/bits/stl_algobase.h:67:
+/usr/include/c++/13/bits/ptr_traits.h:163:47: error: ‘ptrdiff_t’ was not declared in this scope
+  163 |       using difference_type = __detected_or_t<ptrdiff_t, __diff_t, _Ptr>;
+      |                                               ^~~~~~~~~
+/usr/include/c++/13/bits/ptr_traits.h:1:1: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // Pointer Traits -*- C++ -*-
+/usr/include/c++/13/bits/ptr_traits.h:163:72: error: template argument 1 is invalid
+  163 |       using difference_type = __detected_or_t<ptrdiff_t, __diff_t, _Ptr>;
+      |                                                                        ^
+/usr/include/c++/13/bits/ptr_traits.h:201:15: error: ‘ptrdiff_t’ does not name a type
+  201 |       typedef ptrdiff_t difference_type;
+      |               ^~~~~~~~~
+/usr/include/c++/13/bits/ptr_traits.h:201:15: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_algobase.h:93:56: error: ‘size_t’ has not been declared
+   93 |     __memcmp(const _Tp* __first1, const _Up* __first2, size_t __num)
+      |                                                        ^~~~~~
+/usr/include/c++/13/bits/stl_algobase.h: In static member function ‘static _Up* std::__copy_move<_IsMove, true, std::random_access_iterator_tag>::__copy_m(_Tp*, _Tp*, _Up*)’:
+/usr/include/c++/13/bits/stl_algobase.h:435:17: error: ‘ptrdiff_t’ does not name a type
+  435 |           const ptrdiff_t _Num = __last - __first;
+      |                 ^~~~~~~~~
+/usr/include/c++/13/bits/stl_algobase.h:77:1: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   76 | # include <bit> // std::__bit_width
+  +++ |+#include <cstddef>
+   77 | #endif
+/usr/include/c++/13/bits/stl_algobase.h:436:32: error: ‘_Num’ was not declared in this scope
+  436 |           if (__builtin_expect(_Num > 1, true))
+      |                                ^~~~
+/usr/include/c++/13/bits/stl_algobase.h:441:29: error: ‘_Num’ was not declared in this scope
+  441 |           return __result + _Num;
+      |                             ^~~~
+/usr/include/c++/13/bits/stl_algobase.h: In static member function ‘static _Up* std::__copy_move_backward<_IsMove, true, std::random_access_iterator_tag>::__copy_move_b(_Tp*, _Tp*, _Up*)’:
+/usr/include/c++/13/bits/stl_algobase.h:746:17: error: ‘ptrdiff_t’ does not name a type
+  746 |           const ptrdiff_t _Num = __last - __first;
+      |                 ^~~~~~~~~
+/usr/include/c++/13/bits/stl_algobase.h:746:17: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_algobase.h:747:32: error: ‘_Num’ was not declared in this scope
+  747 |           if (__builtin_expect(_Num > 1, true))
+      |                                ^~~~
+/usr/include/c++/13/bits/stl_algobase.h:752:29: error: ‘_Num’ was not declared in this scope
+  752 |           return __result - _Num;
+      |                             ^~~~
+/usr/include/c++/13/bits/stl_algobase.h: In function ‘typename __gnu_cxx::__enable_if<std::__is_byte<_Tp>::__value, void>::__type std::__fill_a1(_Tp*, _Tp*, const _Tp&)’:
+/usr/include/c++/13/bits/stl_algobase.h:950:24: error: expected initializer before ‘__len’
+  950 |       if (const size_t __len = __last - __first)
+      |                        ^~~~~
+/usr/include/c++/13/bits/stl_algobase.h:950:23: error: expected ‘)’ before ‘__len’
+  950 |       if (const size_t __len = __last - __first)
+      |          ~            ^~~~~~
+      |                       )
+/usr/include/c++/13/bits/stl_algobase.h:951:70: error: ‘__len’ was not declared in this scope
+  951 |         __builtin_memset(__first, static_cast<unsigned char>(__tmp), __len);
+      |                                                                      ^~~~~
+/usr/include/c++/13/bits/stl_algobase.h: In static member function ‘static bool std::__equal<true>::equal(const _Tp*, const _Tp*, const _Tp*)’:
+/usr/include/c++/13/bits/stl_algobase.h:1184:28: error: expected initializer before ‘__len’
+ 1184 |           if (const size_t __len = (__last1 - __first1))
+      |                            ^~~~~
+/usr/include/c++/13/bits/stl_algobase.h:1184:28: error: expected ‘)’ before ‘__len’
+/usr/include/c++/13/bits/stl_algobase.h:1184:14: note: to match this ‘(’
+ 1184 |           if (const size_t __len = (__last1 - __first1))
+      |              ^
+/usr/include/c++/13/bits/stl_algobase.h:1185:55: error: ‘__len’ was not declared in this scope
+ 1185 |             return !std::__memcmp(__first1, __first2, __len);
+      |                                                       ^~~~~
+/usr/include/c++/13/bits/stl_algobase.h: At global scope:
+/usr/include/c++/13/bits/stl_algobase.h:1357:16: error: ‘ptrdiff_t’ does not name a type
+ 1357 |         static ptrdiff_t
+      |                ^~~~~~~~~
+/usr/include/c++/13/bits/stl_algobase.h:1357:16: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+In file included from /usr/include/c++/13/bits/new_allocator.h:34,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:33,
+                 from /usr/include/c++/13/bits/allocator.h:46,
+                 from /usr/include/c++/13/vector:63:
+/usr/include/c++/13/new:89:25: error: found ‘:’ in nested-name-specifier, expected ‘::’
+   89 |   enum class align_val_t: size_t {};
+      |                         ^
+      |                         ::
+/usr/include/c++/13/new:89:27: error: ‘size_t’ in ‘enum class std::align_val_t’ does not name a type
+   89 |   enum class align_val_t: size_t {};
+      |                           ^~~~~~
+/usr/include/c++/13/new:89:34: error: expected unqualified-id before ‘{’ token
+   89 |   enum class align_val_t: size_t {};
+      |                                  ^
+/usr/include/c++/13/new:126:26: error: declaration of ‘operator new’ as non-function
+  126 | _GLIBCXX_NODISCARD void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:126:44: error: ‘size_t’ is not a member of ‘std’
+  126 | _GLIBCXX_NODISCARD void* operator new(std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+      |                                            ^~~~~~
+/usr/include/c++/13/new:127:41: error: attributes after parenthesized initializer ignored [-fpermissive]
+  127 |   __attribute__((__externally_visible__));
+      |                                         ^
+/usr/include/c++/13/new:128:26: error: declaration of ‘operator new []’ as non-function
+  128 | _GLIBCXX_NODISCARD void* operator new[](std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:128:46: error: ‘size_t’ is not a member of ‘std’
+  128 | _GLIBCXX_NODISCARD void* operator new[](std::size_t) _GLIBCXX_THROW (std::bad_alloc)
+      |                                              ^~~~~~
+/usr/include/c++/13/new:129:41: error: attributes after parenthesized initializer ignored [-fpermissive]
+  129 |   __attribute__((__externally_visible__));
+      |                                         ^
+/usr/include/c++/13/new:135:29: error: ‘std::size_t’ has not been declared
+  135 | void operator delete(void*, std::size_t) _GLIBCXX_USE_NOEXCEPT
+      |                             ^~~
+/usr/include/c++/13/new:137:31: error: ‘std::size_t’ has not been declared
+  137 | void operator delete[](void*, std::size_t) _GLIBCXX_USE_NOEXCEPT
+      |                               ^~~
+/usr/include/c++/13/new:140:26: error: declaration of ‘operator new’ as non-function
+  140 | _GLIBCXX_NODISCARD void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:140:44: error: ‘size_t’ is not a member of ‘std’
+  140 | _GLIBCXX_NODISCARD void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                                            ^~~~~~
+/usr/include/c++/13/new:140:52: error: expected primary-expression before ‘const’
+  140 | _GLIBCXX_NODISCARD void* operator new(std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                                                    ^~~~~
+/usr/include/c++/13/new:142:26: error: declaration of ‘operator new []’ as non-function
+  142 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:142:46: error: ‘size_t’ is not a member of ‘std’
+  142 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                                              ^~~~~~
+/usr/include/c++/13/new:142:54: error: expected primary-expression before ‘const’
+  142 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, const std::nothrow_t&) _GLIBCXX_USE_NOEXCEPT
+      |                                                      ^~~~~
+/usr/include/c++/13/new:149:26: error: declaration of ‘operator new’ as non-function
+  149 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:149:44: error: ‘size_t’ is not a member of ‘std’
+  149 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t)
+      |                                            ^~~~~~
+/usr/include/c++/13/new:149:68: error: expected primary-expression before ‘)’ token
+  149 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t)
+      |                                                                    ^
+/usr/include/c++/13/new:150:73: error: attributes after parenthesized initializer ignored [-fpermissive]
+  150 |   __attribute__((__externally_visible__, __alloc_size__ (1), __malloc__));
+      |                                                                         ^
+/usr/include/c++/13/new:151:26: error: declaration of ‘operator new’ as non-function
+  151 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:151:44: error: ‘size_t’ is not a member of ‘std’
+  151 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                            ^~~~~~
+/usr/include/c++/13/new:151:68: error: expected primary-expression before ‘,’ token
+  151 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                                                    ^
+/usr/include/c++/13/new:151:70: error: expected primary-expression before ‘const’
+  151 | _GLIBCXX_NODISCARD void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                                                      ^~~~~
+/usr/include/c++/13/new:157:26: error: declaration of ‘operator new []’ as non-function
+  157 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:157:46: error: ‘size_t’ is not a member of ‘std’
+  157 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t)
+      |                                              ^~~~~~
+/usr/include/c++/13/new:157:70: error: expected primary-expression before ‘)’ token
+  157 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t)
+      |                                                                      ^
+/usr/include/c++/13/new:158:73: error: attributes after parenthesized initializer ignored [-fpermissive]
+  158 |   __attribute__((__externally_visible__, __alloc_size__ (1), __malloc__));
+      |                                                                         ^
+/usr/include/c++/13/new:159:26: error: declaration of ‘operator new []’ as non-function
+  159 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                          ^~~~~~~~
+/usr/include/c++/13/new:159:46: error: ‘size_t’ is not a member of ‘std’
+  159 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                              ^~~~~~
+/usr/include/c++/13/new:159:70: error: expected primary-expression before ‘,’ token
+  159 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                                                      ^
+/usr/include/c++/13/new:159:72: error: expected primary-expression before ‘const’
+  159 | _GLIBCXX_NODISCARD void* operator new[](std::size_t, std::align_val_t, const std::nothrow_t&)
+      |                                                                        ^~~~~
+/usr/include/c++/13/new:166:29: error: ‘std::size_t’ has not been declared
+  166 | void operator delete(void*, std::size_t, std::align_val_t)
+      |                             ^~~
+/usr/include/c++/13/new:168:31: error: ‘std::size_t’ has not been declared
+  168 | void operator delete[](void*, std::size_t, std::align_val_t)
+      |                               ^~~
+/usr/include/c++/13/new:174:33: error: declaration of ‘operator new’ as non-function
+  174 | _GLIBCXX_NODISCARD inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                 ^~~~~~~~
+/usr/include/c++/13/new:174:51: error: ‘size_t’ is not a member of ‘std’
+  174 | _GLIBCXX_NODISCARD inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                                   ^~~~~~
+/usr/include/c++/13/new:174:59: error: expected primary-expression before ‘void’
+  174 | _GLIBCXX_NODISCARD inline void* operator new(std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                                           ^~~~
+/usr/include/c++/13/new:176:33: error: declaration of ‘operator new []’ as non-function
+  176 | _GLIBCXX_NODISCARD inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                 ^~~~~~~~
+/usr/include/c++/13/new:176:53: error: ‘size_t’ is not a member of ‘std’
+  176 | _GLIBCXX_NODISCARD inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                                     ^~~~~~
+/usr/include/c++/13/new:176:61: error: expected primary-expression before ‘void’
+  176 | _GLIBCXX_NODISCARD inline void* operator new[](std::size_t, void* __p) _GLIBCXX_USE_NOEXCEPT
+      |                                                             ^~~~
+/usr/include/c++/13/new:212:20: error: ‘size_t’ does not name a type
+  212 |   inline constexpr size_t hardware_destructive_interference_size = __GCC_DESTRUCTIVE_SIZE;
+      |                    ^~~~~~
+/usr/include/c++/13/new:42:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   41 | #include <bits/exception.h>
+  +++ |+#include <cstddef>
+   42 |
+/usr/include/c++/13/new:213:20: error: ‘size_t’ does not name a type
+  213 |   inline constexpr size_t hardware_constructive_interference_size = __GCC_CONSTRUCTIVE_SIZE;
+      |                    ^~~~~~
+/usr/include/c++/13/new:213:20: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/new_allocator.h:67:20: error: ‘size_t’ in namespace ‘std’ does not name a type
+   67 |       typedef std::size_t     size_type;
+      |                    ^~~~~~
+/usr/include/c++/13/bits/new_allocator.h:68:20: error: ‘ptrdiff_t’ in namespace ‘std’ does not name a type
+   68 |       typedef std::ptrdiff_t  difference_type;
+      |                    ^~~~~~~~~
+/usr/include/c++/13/bits/new_allocator.h:126:16: error: ‘size_type’ has not been declared
+  126 |       allocate(size_type __n, const void* = static_cast<const void*>(0))
+      |                ^~~~~~~~~
+/usr/include/c++/13/bits/new_allocator.h:156:28: error: ‘size_type’ has not been declared
+  156 |       deallocate(_Tp* __p, size_type __n __attribute__ ((__unused__)))
+      |                            ^~~~~~~~~
+/usr/include/c++/13/bits/new_allocator.h:181:7: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+  181 |       size_type
+      |       ^~~~~~~~~
+      |       true_type
+/usr/include/c++/13/bits/new_allocator.h:229:26: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+  229 |       _GLIBCXX_CONSTEXPR size_type
+      |                          ^~~~~~~~~
+      |                          true_type
+/usr/include/c++/13/bits/new_allocator.h: In member function ‘_Tp* std::__new_allocator<_Tp>::allocate(int, const void*)’:
+/usr/include/c++/13/bits/new_allocator.h:138:29: error: ‘size_t’ is not a member of ‘std’
+  138 |             if (__n > (std::size_t(-1) / sizeof(_Tp)))
+      |                             ^~~~~~
+/usr/include/c++/13/bits/allocator.h: At global scope:
+/usr/include/c++/13/bits/allocator.h:79:15: error: ‘size_t’ does not name a type
+   79 |       typedef size_t      size_type;
+      |               ^~~~~~
+/usr/include/c++/13/bits/allocator.h:48:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   47 | #include <bits/memoryfwd.h>
+  +++ |+#include <cstddef>
+   48 | #if __cplusplus >= 201103L
+/usr/include/c++/13/bits/allocator.h:80:15: error: ‘ptrdiff_t’ does not name a type
+   80 |       typedef ptrdiff_t   difference_type;
+      |               ^~~~~~~~~
+/usr/include/c++/13/bits/allocator.h:80:15: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/allocator.h:134:15: error: ‘size_t’ does not name a type
+  134 |       typedef size_t     size_type;
+      |               ^~~~~~
+/usr/include/c++/13/bits/allocator.h:134:15: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/allocator.h:135:15: error: ‘ptrdiff_t’ does not name a type
+  135 |       typedef ptrdiff_t  difference_type;
+      |               ^~~~~~~~~
+/usr/include/c++/13/bits/allocator.h:135:15: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+In file included from /usr/include/c++/13/ext/alloc_traits.h:34,
+                 from /usr/include/c++/13/bits/stl_uninitialized.h:64,
+                 from /usr/include/c++/13/vector:65:
+/usr/include/c++/13/bits/alloc_traits.h:449:36: error: ‘ptrdiff_t’ in namespace ‘std’ does not name a type
+  449 |       using difference_type = std::ptrdiff_t;
+      |                                    ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:452:30: error: ‘size_t’ in namespace ‘std’ does not name a type
+  452 |       using size_type = std::size_t;
+      |                              ^~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:481:37: error: ‘size_type’ has not been declared
+  481 |       allocate(allocator_type& __a, size_type __n)
+      |                                     ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:496:37: error: ‘size_type’ has not been declared
+  496 |       allocate(allocator_type& __a, size_type __n,
+      |                                     ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:516:52: error: ‘size_type’ has not been declared
+  516 |       deallocate(allocator_type& __a, pointer __p, size_type __n)
+      |                                                    ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:570:35: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+  570 |       static _GLIBCXX20_CONSTEXPR size_type
+      |                                   ^~~~~~~~~
+      |                                   true_type
+/usr/include/c++/13/bits/alloc_traits.h:614:36: error: ‘ptrdiff_t’ in namespace ‘std’ does not name a type
+  614 |       using difference_type = std::ptrdiff_t;
+      |                                    ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:617:30: error: ‘size_t’ in namespace ‘std’ does not name a type
+  617 |       using size_type = std::size_t;
+      |                              ^~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:639:33: error: ‘size_type’ has not been declared
+  639 |       allocate(allocator_type&, size_type, const void* = nullptr) = delete;
+      |                                 ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:643:42: error: ‘size_type’ has not been declared
+  643 |       deallocate(allocator_type&, void*, size_type) = delete;
+      |                                          ^~~~~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:678:14: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+  678 |       static size_type
+      |              ^~~~~~~~~
+      |              true_type
+/usr/include/c++/13/bits/alloc_traits.h:849:58: error: ‘size_t’ was not declared in this scope
+  849 |                decltype(std::declval<_Alloc&>().allocate(size_t{}))>>
+      |                                                          ^~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:1:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // Allocator traits -*- C++ -*-
+/usr/include/c++/13/bits/alloc_traits.h:849:58: error: ‘size_t’ was not declared in this scope
+  849 |                decltype(std::declval<_Alloc&>().allocate(size_t{}))>>
+      |                                                          ^~~~~~
+/usr/include/c++/13/bits/alloc_traits.h:849:58: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+/usr/include/c++/13/bits/stl_uninitialized.h: In function ‘std::__enable_if_t<std::__is_bitwise_relocatable<_Tp>::value, _Tp*> std::__relocate_a_1(_Tp*, _Tp*, _Tp*, allocator<_T2>&)’:
+/usr/include/c++/13/bits/stl_uninitialized.h:1118:7: error: ‘ptrdiff_t’ was not declared in this scope
+ 1118 |       ptrdiff_t __count = __last - __first;
+      |       ^~~~~~~~~
+/usr/include/c++/13/bits/stl_uninitialized.h:65:1: note: ‘ptrdiff_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+   64 | #include <ext/alloc_traits.h>     // __alloc_traits
+  +++ |+#include <cstddef>
+   65 |
+/usr/include/c++/13/bits/stl_uninitialized.h:1119:11: error: ‘__count’ was not declared in this scope; did you mean ‘__popcount’?
+ 1119 |       if (__count > 0)
+      |           ^~~~~~~
+      |           __popcount
+/usr/include/c++/13/bits/stl_uninitialized.h:1133:25: error: ‘__count’ was not declared in this scope; did you mean ‘__popcount’?
+ 1133 |       return __result + __count;
+      |                         ^~~~~~~
+      |                         __popcount
+In file included from /usr/include/c++/13/bits/stl_vector.h:63,
+                 from /usr/include/c++/13/vector:66:
+/usr/include/c++/13/initializer_list: At global scope:
+/usr/include/c++/13/initializer_list:51:15: error: ‘size_t’ does not name a type
+   51 |       typedef size_t            size_type;
+      |               ^~~~~~
+/usr/include/c++/13/initializer_list:1:1: note: ‘size_t’ is defined in header ‘<cstddef>’; did you forget to ‘#include <cstddef>’?
+  +++ |+#include <cstddef>
+    1 | // std::initializer_list support -*- C++ -*-
+/usr/include/c++/13/initializer_list:57:7: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+   57 |       size_type                 _M_len;
+      |       ^~~~~~~~~
+      |       true_type
+/usr/include/c++/13/initializer_list:60:54: error: ‘size_type’ has not been declared
+   60 |       constexpr initializer_list(const_iterator __a, size_type __l)
+      |                                                      ^~~~~~~~~
+/usr/include/c++/13/initializer_list:68:17: error: ‘size_type’ does not name a type; did you mean ‘true_type’?
+   68 |       constexpr size_type
+      |                 ^~~~~~~~~
+      |                 true_type
+/usr/include/c++/13/initializer_list:45:11: fatal error: definition of ‘class std::initializer_list<_E>’ does not match ‘#include <initializer_list>’
+   45 |     class initializer_list
+      |           ^~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from src/test_ffn.cpp:3:
+include/ffn.h:30:2: error: #endif without #if
+   30 | #endif
+      |  ^~~~~
+include/ffn.h:1:3: error: ‘GNU’ does not name a type
+    1 |   GNU nano 7.2                             include/ffn.h *
+      |   ^~~
+src/test_ffn.cpp: In function ‘int main()’:
+src/test_ffn.cpp:20:5: error: ‘ffn’ was not declared in this scope
+   20 |     ffn(x, W1, b1, W2, b2, out, seq_len, d_model, d_ff);
+      |     ^~~
+aakash@pop-os:~/LLM_Parallel$ cat > include/ffn.h << 'EOF'
+#ifndef FFN_H
+#define FFN_H
+
+#include <vector>
+
+void ffn(const std::vector<float>& x,
+         const std::vector<float>& W1,
+         const std::vector<float>& b1,
+         const std::vector<float>& W2,
+         const std::vector<float>& b2,
+         std::vector<float>& out,
+         int seq_len, int d_model, int d_ff);
+
+#endif // FFN_H
+EOF
+aakash@pop-os:~/LLM_Parallel$ cat include/ffn.h
+#ifndef FFN_H
+#define FFN_H
+
+#include <vector>
+
+void ffn(const std::vector<float>& x,
+         const std::vector<float>& W1,
+         const std::vector<float>& b1,
+         const std::vector<float>& W2,
+         const std::vector<float>& b2,
+         std::vector<float>& out,
+         int seq_len, int d_model, int d_ff);
+
+#endif // FFN_H
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/matmul.cpp src/ffn.cpp src/test_ffn.cpp -o test_ffn && ./test_ffn
+FFN output (2 x 4):
+4.4 4.4 4.4 4.4
+4.4 4.4 4.4 4.4
+FFN test PASSED
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Add FFN kernel with test - Phase 1 complete"
+git push
+[main 63b588e] Add FFN kernel with test - Phase 1 complete
+ 5 files changed, 138 insertions(+)
+ create mode 100644 include/ffn.h
+ create mode 100644 src/ffn.cpp
+ create mode 100644 src/test_ffn.cpp
+ create mode 100644 terminal2.txt
+ create mode 100755 test_ffn
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 11.98 KiB | 3.99 MiB/s, done.
+Total 9 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To https://github.com/Aakash50909/LLM_Parallel.git
+   165ccb9..63b588e  main -> main
+aakash@pop-os:~/LLM_Parallel$ touch src/benchmark.cpp include/benchmark.h
+aakash@pop-os:~/LLM_Parallel$ cat > include/benchmark.h << 'EOF'
+#ifndef BENCHMARK_H
+#define BENCHMARK_H
+
+#include <chrono>
+#include <string>
+#include <functional>
+
+// Runs a function `trials` times and returns average time in milliseconds
+double time_ms(std::function<void()> fn, int trials = 5);
+
+// Prints a formatted benchmark result line
+void print_result(const std::string& label, double ms, double baseline_ms);
+
+#endif // BENCHMARK_H
+EOF
+aakash@pop-os:~/LLM_Parallel$ cat > src/benchmark.cpp << 'EOF'
+#include "benchmark.h"
+#include <iostream>
+#include <iomanip>
+
+double time_ms(std::function<void()> fn, int trials) {
+    // Warmup run — not counted
+    // First call often slower due to cache misses and branch predictor warmup
+    fn();
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < trials; i++)
+        fn();
+    auto end = std::chrono::high_resolution_clock::now();
+
+    // Returns average time per call in milliseconds
+    std::chrono::duration<double, std::milli> elapsed = end - start;
+    return elapsed.count() / trials;
+}
+
+void print_result(const std::string& label, double ms, double baseline_ms) {
+    double speedup = baseline_ms / ms;
+    std::cout << std::left  << std::setw(25) << label
+              << std::right << std::setw(10) << std::fixed << std::setprecision(3) << ms << " ms"
+              << std::setw(10) << std::fixed << std::setprecision(2) << speedup << "x\n";
+}
+EOF
+aakash@pop-os:~/LLM_Parallel$ cat > src/bench_matmul.cpp << 'EOF'
+#include <iostream>
+#include <vector>
+#include <random>
+#include "matmul.h"
+#include "benchmark.h"
+
+// Fill a vector with random floats between -1 and 1
+void rand_fill(std::vector<float>& v) {
+    std::mt19937 rng(42);
+    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
+    for (float& x : v) x = dist(rng);
+}
+
+int main() {
+    std::cout << std::left  << std::setw(25) << "Configuration"
+              << std::right << std::setw(12) << "Time"
+              << std::setw(10) << "Speedup\n";
+    std::cout << std::string(47, '-') << "\n";
+
+    // Test across increasing matrix sizes
+    // Small (64) shows overhead, large (1024) shows parallelism benefit
+    for (int N : {64, 128, 256, 512, 1024}) {
+        std::vector<float> A(N * N), B(N * N), C;
+        rand_fill(A);
+        rand_fill(B);
+
+        std::string label = "serial " + std::to_string(N) + "x" + std::to_string(N);
+
+        double ms = time_ms([&]() {
+            matmul(A, B, C, N, N, N);
+        });
+
+        // Baseline = itself for now, will compare once OpenMP is added
+        print_result(label, ms, ms);
+    }
+
+EOF return 0;
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/matmul.cpp src/benchmark.cpp src/bench_matmul.cpp -o bench_matmul && ./bench_matmul
+src/bench_matmul.cpp: In function ‘int main()’:
+src/bench_matmul.cpp:15:37: error: ‘setw’ is not a member of ‘std’
+   15 |     std::cout << std::left  << std::setw(25) << "Configuration"
+      |                                     ^~~~
+src/bench_matmul.cpp:6:1: note: ‘std::setw’ is defined in header ‘<iomanip>’; did you forget to ‘#include <iomanip>’?
+    5 | #include "benchmark.h"
+  +++ |+#include <iomanip>
+    6 |
+src/bench_matmul.cpp:16:37: error: ‘setw’ is not a member of ‘std’
+   16 |               << std::right << std::setw(12) << "Time"
+      |                                     ^~~~
+src/bench_matmul.cpp:16:37: note: ‘std::setw’ is defined in header ‘<iomanip>’; did you forget to ‘#include <iomanip>’?
+src/bench_matmul.cpp:17:23: error: ‘setw’ is not a member of ‘std’
+   17 |               << std::setw(10) << "Speedup\n";
+      |                       ^~~~
+src/bench_matmul.cpp:17:23: note: ‘std::setw’ is defined in header ‘<iomanip>’; did you forget to ‘#include <iomanip>’?
+aakash@pop-os:~/LLM_Parallel$ cat > src/bench_matmul.cpp << 'EOF'
+aakash@pop-os:~/LLM_Parallel$ cat > src/bench_matmul.cpp << 'EOF'
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <random>
+#include <string>h"
+#include "matmul.h".h"
+#include "benchmark.h"
+void rand_fill(std::vector<float>& v) {
+void rand_fill(std::vector<float>& v) {
+    std::mt19937 rng(42);tribution<float> dist(-1.0f, 1.0f);
+    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
+    for (float& x : v) x = dist(rng);
+}
+int main() {
+int main() {t << std::left  << std::setw(25) << "Configuration"
+    std::cout << std::left  << std::setw(25) << "Configuration"
+              << std::right << std::setw(12) << "Time"
+              << std::setw(10) << "Speedup\n";
+    std::cout << std::string(47, '-') << "\n";
+    for (int N : {64, 128, 256, 512, 1024}) {
+    for (int N : {64, 128, 256, 512, 1024}) {, C;
+        std::vector<float> A(N * N), B(N * N), C;
+        rand_fill(A);
+        rand_fill(B);
+        std::string label = "serial " + std::to_string(N) + "x" + std::to_string(N);
+        std::string label = "serial " + std::to_string(N) + "x" + std::to_string(N);
+        double ms = time_ms([&]() {
+        double ms = time_ms([&]() {);
+            matmul(A, B, C, N, N, N);
+        });
+        print_result(label, ms, ms);
+        print_result(label, ms, ms);
+    }
+    return 0;
+    return 0;
+}OF
+EOF
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -I include src/matmul.cpp src/benchmark.cpp src/bench_matmul.cpp -o bench_matmul && ./bench_matmul
+Configuration                    Time  Speedup
+-----------------------------------------------
+serial 64x64                  2.167 ms      1.00x
+serial 128x128               16.820 ms      1.00x
+serial 256x256              134.489 ms      1.00x
+serial 512x512             1047.454 ms      1.00x
+serial 1024x1024           6606.050 ms      1.00x
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Add benchmark harness with serial baseline results"
+git push
+[main b3eb498] Add benchmark harness with serial baseline results
+ 4 files changed, 75 insertions(+)
+ create mode 100755 bench_matmul
+ create mode 100644 include/benchmark.h
+ create mode 100644 src/bench_matmul.cpp
+ create mode 100644 src/benchmark.cpp
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 17.84 KiB | 3.57 MiB/s, done.
+Total 8 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/Aakash50909/LLM_Parallel.git
+   63b588e..b3eb498  main -> main
+aakash@pop-os:~/LLM_Parallel$ cat > src/matmul.cpp << 'EOF'
+#include "matmul.h"
+#include <stdexcept>
+#include <cmath>
+
+void matmul(const std::vector<float>& A,
+            const std::vector<float>& B,
+            std::vector<float>& C,
+            int M, int K, int N) {
+
+    if ((int)A.size() != M * K)
+        throw std::invalid_argument("matmul: A size mismatch");
+    if ((int)B.size() != K * N)
+        throw std::invalid_argument("matmul: B size mismatch");
+
+    C.assign(M * N, 0.0f);
+
+    // #pragma omp parallel for tells OpenMP to split the outer loop
+    // across all available threads automatically.
+    // Each thread gets a unique value of i and works on its own
+    // rows of C — no two threads ever write to the same memory location
+    // so there are zero race conditions here.
+    // schedule(static) divides iterations into equal chunks upfront —
+    // best for uniform work like matmul where every row costs the same.
+    #pragma omp parallel for schedule(static)
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            float sum = 0.0f;
+            for (int k = 0; k < K; k++) {
+                sum += A[i * K + k] * B[k * N + j];
+            }
+            C[i * N + j] = sum;
+        }
+    }
+}
+EOF
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -fopenmp -I include src/matmul.cpp src/benchmark.cpp src/bench_matmul.cpp -o bench_matmul_omp && ./bench_matmul_omp
+Configuration                    Time  Speedup
+-----------------------------------------------
+serial 64x64                  5.593 ms      1.00x
+serial 128x128                2.441 ms      1.00x
+serial 256x256               17.856 ms      1.00x
+serial 512x512              142.340 ms      1.00x
+serial 1024x1024           1064.107 ms      1.00x
+aakash@pop-os:~/LLM_Parallel$ OMP_NUM_THREADS=8 ./bench_matmul_omp
+Configuration                    Time  Speedup
+-----------------------------------------------
+serial 64x64                  0.565 ms      1.00x
+serial 128x128                2.714 ms      1.00x
+serial 256x256               18.997 ms      1.00x
+serial 512x512              152.267 ms      1.00x
+serial 1024x1024           1235.557 ms      1.00x
+aakash@pop-os:~/LLM_Parallel$ OMP_NUM_THREADS=16 ./bench_matmul_omp
+Configuration                    Time  Speedup
+-----------------------------------------------
+serial 64x64                  7.631 ms      1.00x
+serial 128x128                2.528 ms      1.00x
+serial 256x256               17.901 ms      1.00x
+serial 512x512              143.476 ms      1.00x
+serial 1024x1024           1154.522 ms      1.00x
+aakash@pop-os:~/LLM_Parallel$ OMP_NUM_THREADS=4 ./bench_matmul_omp
+Configuration                    Time  Speedup
+-----------------------------------------------
+serial 64x64                  0.659 ms      1.00x
+serial 128x128                4.834 ms      1.00x
+serial 256x256               37.788 ms      1.00x
+serial 512x512              303.063 ms      1.00x
+serial 1024x1024           1990.354 ms      1.00x
+aakash@pop-os:~/LLM_Parallel$ cat > src/bench_matmul.cpp << 'EOF'
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <random>
+#include <string>
+#include "matmul.h"
+#include "benchmark.h"
+
+void rand_fill(std::vector<float>& v) {
+    std::mt19937 rng(42);
+    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
+    for (float& x : v) x = dist(rng);
+}
+
+int main() {
+    // Hardcoded serial baselines measured on this machine
+    // These came from the unparallelized run (before -fopenmp)
+    // Units: milliseconds, averaged over 5 trials
+    double serial_baseline[] = {2.167, 16.820, 134.489, 1047.454, 6606.050};
+    int sizes[] = {64, 128, 256, 512, 1024};
+
+    std::cout << std::left  << std::setw(25) << "Configuration"
+              << std::right << std::setw(12) << "Time"
+              << std::setw(12) << "Speedup\n";
+    std::cout << std::string(49, '-') << "\n";
+
+    for (int idx = 0; idx < 5; idx++) {
+        int N = sizes[idx];
+        std::vector<float> A(N * N), B(N * N), C;
+        rand_fill(A);
+        rand_fill(B);
+
+        std::string label = "omp " + std::to_string(N) + "x" + std::to_string(N);
+
+        double ms = time_ms([&]() {
+            matmul(A, B, C, N, N, N);
+EOF return 0;_result(label, ms, serial_baseline[idx]); the real metric
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -fopenmp -I include src/matmul.cpp src/benchmark.cpp src/bench_matmul.cpp -o bench_matmul_omp
+aakash@pop-os:~/LLM_Parallel$ echo "=== Default threads ===" && ./bench_matmul_omp
+echo "=== 4 threads ===" && OMP_NUM_THREADS=4 ./bench_matmul_omp
+echo "=== 6 threads ===" && OMP_NUM_THREADS=6 ./bench_matmul_omp
+echo "=== 8 threads ===" && OMP_NUM_THREADS=8 ./bench_matmul_omp
+=== Default threads ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     7.832 ms      0.28x
+omp 128x128                   2.736 ms      6.15x
+omp 256x256                  18.074 ms      7.44x
+omp 512x512                 142.372 ms      7.36x
+omp 1024x1024              1098.799 ms      6.01x
+=== 4 threads ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     0.527 ms      4.11x
+omp 128x128                   3.907 ms      4.31x
+omp 256x256                  27.570 ms      4.88x
+omp 512x512                 208.527 ms      5.02x
+omp 1024x1024              1710.885 ms      3.86x
+=== 6 threads ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     0.598 ms      3.63x
+omp 128x128                   3.052 ms      5.51x
+omp 256x256                  25.178 ms      5.34x
+omp 512x512                 171.403 ms      6.11x
+omp 1024x1024              1152.347 ms      5.73x
+=== 8 threads ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     0.378 ms      5.73x
+omp 128x128                   2.127 ms      7.91x
+omp 256x256                  14.773 ms      9.10x
+omp 512x512                 114.721 ms      9.13x
+omp 1024x1024               898.601 ms      7.35x
+aakash@pop-os:~/LLM_Parallel$ echo "=== 8 threads (physical cores) ===" && OMP_NUM_THREADS=8 ./bench_matmul_omp
+echo "=== 16 threads (logical threads) ===" && OMP_NUM_THREADS=16 ./bench_matmul_omp
+=== 8 threads (physical cores) ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     0.558 ms      3.88x
+omp 128x128                   2.659 ms      6.33x
+omp 256x256                  19.166 ms      7.02x
+omp 512x512                 151.793 ms      6.90x
+omp 1024x1024              1194.993 ms      5.53x
+=== 16 threads (logical threads) ===
+Configuration                    Time    Speedup
+-------------------------------------------------
+omp 64x64                     5.996 ms      0.36x
+omp 128x128                   2.442 ms      6.89x
+omp 256x256                  15.436 ms      8.71x
+omp 512x512                 120.412 ms      8.70x
+omp 1024x1024               897.146 ms      7.36x
+aakash@pop-os:~/LLM_Parallel$ cat > src/bench_matmul.cpp << 'EOF'
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <random>
+#include <string>
+#include "matmul.h"
+#include "benchmark.h"
+
+void rand_fill(std::vector<float>& v) {
+    std::mt19937 rng(42);
+    std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
+    for (float& x : v) x = dist(rng);
+}
+
+int main() {
+    int sizes[] = {64, 128, 256, 512, 1024};
+
+    std::cout << std::left  << std::setw(28) << "Configuration"
+              << std::right << std::setw(12) << "Serial ms"
+              << std::setw(12) << "OMP ms"
+              << std::setw(10) << "Speedup\n";
+    std::cout << std::string(62, '-') << "\n";
+
+    for (int idx = 0; idx < 5; idx++) {
+        int N = sizes[idx];
+        std::vector<float> A(N * N), B(N * N), C;
+        rand_fill(A);
+        rand_fill(B);
+
+        // Time the serial run with OpenMP disabled at runtime
+        // omp_set_num_threads(1) forces single-threaded execution
+        // even in an OpenMP-compiled binary
+        double serial_ms = time_ms([&]() {
+            // We directly call the triple loop logic here inline
+            // to guarantee zero OpenMP involvement
+            C.assign(N * N, 0.0f);
+EOF return 0;     << std::setw(9)  << std::setprecision(2) << speedup << "x\n";
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Phase 2: OpenMP matmul with speedup benchmarks - peak 9.13x at 8 threads"
+git push
+[main 2afedc7] Phase 2: OpenMP matmul with speedup benchmarks - peak 9.13x at 8 threads
+ 3 files changed, 63 insertions(+), 29 deletions(-)
+ create mode 100755 bench_matmul_omp
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 18.32 KiB | 4.58 MiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/Aakash50909/LLM_Parallel.git
+   b3eb498..2afedc7  main -> main
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -fopenmp -I include src/matmul.cpp src/benchmark.cpp src/bench_matmul.cpp -o bench_matmul_omp && OMP_NUM_THREADS=8 ./bench_matmul_omp
+Configuration                  Serial ms      OMP ms  Speedup
+--------------------------------------------------------------
+64x64                              2.853       0.350     8.14x
+128x128                           21.800       2.590     8.42x
+256x256                          176.430      18.937     9.32x
+512x512                         1184.804     106.016    11.18x
+1024x1024                       8339.819    1012.379     8.24x
+aakash@pop-os:~/LLM_Parallel$ echo "=== 8 threads (physical cores) ===" && OMP_NUM_THREADS=8 ./bench_matmul_omp
+echo "=== 16 threads (logical threads) ===" && OMP_NUM_THREADS=16 ./bench_matmul_omp
+=== 8 threads (physical cores) ===
+Configuration                  Serial ms      OMP ms  Speedup
+--------------------------------------------------------------
+64x64                              2.797       0.435     6.42x
+128x128                           22.038       2.358     9.35x
+256x256                          175.527      18.883     9.30x
+512x512                         1316.402     112.917    11.66x
+1024x1024                       8857.920    1004.714     8.82x
+=== 16 threads (logical threads) ===
+Configuration                  Serial ms      OMP ms  Speedup
+--------------------------------------------------------------
+64x64                              2.002       0.339     5.91x
+128x128                           17.848       6.190     2.88x
+256x256                          119.820      14.212     8.43x
+512x512                          977.329     116.676     8.38x
+1024x1024                       7905.439     888.791     8.89x
+aakash@pop-os:~/LLM_Parallel$ git add .
+git commit -m "Phase 2: OpenMP benchmarks complete, peak 11.66x speedup at 8 threads"
+git push
+[main 417ab26] Phase 2: OpenMP benchmarks complete, peak 11.66x speedup at 8 threads
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 8.51 KiB | 2.84 MiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/Aakash50909/LLM_Parallel.git
+   2afedc7..417ab26  main -> main
+aakash@pop-os:~/LLM_Parallel$ cat > src/attention.cpp << 'EOF'
+#include "attention.h"
+#include "matmul.h"
+#include "softmax.h"
+#include <cmath>
+#include <vector>
+
+void attention(const std::vector<float>& Q,
+               const std::vector<float>& K,
+               const std::vector<float>& V,
+               std::vector<float>& out,
+               int seq_len, int d_k, int d_v) {
+
+    // Transpose K: (seq_len x d_k) -> (d_k x seq_len)
+    std::vector<float> Kt(d_k * seq_len);
+    for (int i = 0; i < seq_len; i++)
+        for (int j = 0; j < d_k; j++)
+            Kt[j * seq_len + i] = K[i * d_k + j];
+
+    // scores = Q * Kt  shape: (seq_len x seq_len)
+    std::vector<float> scores;
+    matmul(Q, Kt, scores, seq_len, d_k, seq_len);
+
+    // Scale by 1/sqrt(d_k)
+    float scale = 1.0f / sqrtf((float)d_k);
+
+    // Each query token i is completely independent of every other token.
+    // We can compute the scale + softmax + weighted sum for each row
+    // in parallel with no shared writes between threads.
+    // private(scale) ensures each thread has its own copy of scale.
+    // The output rows out[i*d_v .. i*d_v+d_v-1] are unique per thread.
+    #pragma omp parallel for schedule(static)
+    for (int i = 0; i < seq_len; i++) {
+
+        // Scale row i of scores in-place
+        // Each thread only touches its own row — no race condition
+        for (int j = 0; j < seq_len; j++)
+EOF }   }   out[i * d_v + j] = val;eq_len + k] * V[k * d_v + j];j] - max_val);
+aakash@pop-os:~/LLM_Parallel$ cat >> src/attention.cpp << 'EOF'
+EOF
+aakash@pop-os:~/LLM_Parallel$ cat > src/attention.cpp << 'EOF'
+#include "attention.h"
+#include "matmul.h"
+#include "softmax.h"
+#include <cmath>
+#include <vector>
+
+void attention(const std::vector<float>& Q,
+               const std::vector<float>& K,
+               const std::vector<float>& V,
+               std::vector<float>& out,
+               int seq_len, int d_k, int d_v) {
+
+    std::vector<float> Kt(d_k * seq_len);
+    for (int i = 0; i < seq_len; i++)
+        for (int j = 0; j < d_k; j++)
+            Kt[j * seq_len + i] = K[i * d_k + j];
+
+    std::vector<float> scores;
+    matmul(Q, Kt, scores, seq_len, d_k, seq_len);
+
+    // Pre-allocate output before entering parallel region
+    // All threads write to different rows so no mutex needed
+    out.assign(seq_len * d_v, 0.0f);
+
+    float scale = 1.0f / sqrtf((float)d_k);
+
+    #pragma omp parallel for schedule(static)
+    for (int i = 0; i < seq_len; i++) {
+
+        for (int j = 0; j < seq_len; j++)
+            scores[i * seq_len + j] *= scale;
+
+        float max_val = scores[i * seq_len];
+        for (int j = 1; j < seq_len; j++)
+            if (scores[i * seq_len + j] > max_val)
+EOF }   }   out[i * d_v + j] = val;eq_len + k] * V[k * d_v + j];j] - max_val);
+aakash@pop-os:~/LLM_Parallel$ g++ -std=c++17 -fopenmp -I include src/matmul.cpp src/softmax.cpp src/attention.cpp src/test_attention.cpp -o test_attention_omp && ./test_attention_omp
+Attention output (3 x 4):
+0.451863 0.548137 0.822206 0
+0.274069 0.903726 0.822206 0
+0.274069 0.548137 1.35559 0
+Shape check (should be 12): 12 — PASSED
+aakash@pop-os:~/LLM_Parallel$
