@@ -8,7 +8,7 @@ This project implements the complete forward pass of a GPT-style Large Language 
 ---
 
 ## 📄 Read the Full Report
-*(To embed the PDF directly in your GitHub README, ensure `Report_102317242.pdf` is uploaded to your repository and use the code below. Note: GitHub's native markdown viewer sometimes restricts direct PDF embedding, so a direct link is also provided as a fallback).*
+LINK to report : https://aakash50909.github.io/Parallel_Inference_Engine/
 
 <details>
 <summary><b>View Full PDF Report</b></summary>
