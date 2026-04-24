@@ -50,3 +50,5 @@ The hybrid inference engine can be compiled using `nvcc` by linking the respecti
 nvcc -std=c++17 -O3 -ccbin mpicxx -Xcompiler -fopenmp \
 src/matmul.cpp src/matmul_cuda.cu src/hybrid_main.cpp \
 -o hybrid_engine
+
+mpirun -np 2 ./hybrid_engine
